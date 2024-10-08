@@ -11,3 +11,8 @@ date:DATE|lengthThreshold:INT|languages:STRING[]
 indicates that there are 3 parameters, `date` (a date value), `lengthThreshold` (a 64-bit integer), and `languages` (a string array).
 
 The expected headers for each `bi-*.csv` files are specified in the `headers.csv` file.
+
+## SF30,000 parameters
+
+The parameters for SF30,000 were re-generated in autumn 2023 before conducting the TuGraph audit (LDBC_SNB_BI_20231203_SF30000_tugraph).
+We included the old parameters as `parameters-sf30000-deprecated` but these should *not* be used.

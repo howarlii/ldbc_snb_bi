@@ -12,17 +12,19 @@ python3 -c 'import psycopg2' || (echo "psycopg2 Python package is missing or bro
 
 echo -n "Outputting Umbra parameters"
 docker run \
+    --user=0:0 \
     --volume=${UMBRA_DATABASE_DIR}:/var/db/:z \
     --volume=${UMBRA_DDL_DIR}:/ddl/:z \
     --env USEDIRECTIO=1 \
     ${UMBRA_DOCKER_BUFFERSIZE_ENV_VAR} \
     ${UMBRA_DOCKER_IMAGE} \
-    umbra_sql \
+    umbra-sql \
       "" \
       /ddl/output-env.sql
 
 echo -n "Starting the database . "
 docker run \
+    --user=0:0 \
     --name ${UMBRA_CONTAINER_NAME} \
     --detach \
     --volume=${UMBRA_CSV_DIR}:/data/:z \
@@ -33,7 +35,7 @@ docker run \
     --env USEDIRECTIO=1 \
     ${UMBRA_DOCKER_BUFFERSIZE_ENV_VAR} \
     ${UMBRA_DOCKER_IMAGE} \
-    umbra_server \
+    umbra-server \
         --address 0.0.0.0 \
         /var/db/ldbc.db \
     >/dev/null

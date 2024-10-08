@@ -11,6 +11,7 @@ echo -n "Cleaning up . . ."
 mkdir -p ${UMBRA_DATABASE_DIR}/
 mkdir -p ${UMBRA_LOG_DIR}/
 docker run \
+    --user=0:0 \
     --volume=${UMBRA_DATABASE_DIR}:/var/db/:z \
     ${UMBRA_DOCKER_IMAGE} \
     rm -rf "/var/db/*" "/var/log/*"
@@ -18,10 +19,11 @@ echo " Cleanup done."
 
 echo -n "Creating database . . ."
 docker run \
+    --user=0:0 \
     --volume=${UMBRA_DATABASE_DIR}:/var/db/:z \
     --volume=${UMBRA_DDL_DIR}:/ddl/:z \
     ${UMBRA_DOCKER_IMAGE} \
-    umbra_sql \
+    umbra-sql \
     --createdb \
       /var/db/ldbc.db \
       /ddl/create-role.sql \

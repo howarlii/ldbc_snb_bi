@@ -10,6 +10,7 @@ cd ..
 
 scripts/stop.sh
 docker run \
+    --user=0:0 \
     --volume=${UMBRA_DATABASE_DIR}:/var/db/:z \
     --volume=${UMBRA_BACKUP_DIR}:/var/backup/:z \
     ${UMBRA_DOCKER_IMAGE} \

@@ -8,8 +8,8 @@ export UMBRA_DATABASE_DIR=`pwd`/scratch/db/
 export UMBRA_LOG_DIR=`pwd`/scratch/log/
 export UMBRA_DDL_DIR=`pwd`/ddl/
 export UMBRA_CONTAINER_NAME=snb-bi-umbra
-export UMBRA_VERSION=cbad59200
-export UMBRA_DOCKER_IMAGE=umbra-release:${UMBRA_VERSION}
+export UMBRA_VERSION=latest
+export UMBRA_DOCKER_IMAGE=umbradb/umbra:${UMBRA_VERSION}
 
 if [ -z "${UMBRA_BUFFERSIZE+x}" ]; then
     export UMBRA_DOCKER_BUFFERSIZE_ENV_VAR=
