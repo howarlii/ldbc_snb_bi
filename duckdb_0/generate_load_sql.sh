@@ -1,7 +1,12 @@
 #!/bin/bash
 
-SF=1
-DATAPATH=/data/project/ldbc-bi/out_sf${SF}_bi_gzip
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 <SF> <DATAPATH>"
+  exit 1
+fi
+
+SF=$1
+DATAPATH=$2
 sed "s|PATHVAR|/$DATAPATH/graphs/csv/bi/composite-merged-fk/initial_snapshot/|" snb-load.sql > temp.sql
 
 # Step 2: Process each line in temp.sql

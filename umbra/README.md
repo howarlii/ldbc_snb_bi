@@ -42,6 +42,7 @@ Note that unlike Postgres, Umbra does not support directly loading from compress
     * To use a locally generated data set, set the `${LDBC_SNB_DATAGEN_DIR}` and `${SF}` environment variables and run:
 
         ```bash
+        export SF=1  # desired_scale_factor
         export UMBRA_CSV_DIR=${LDBC_SNB_DATAGEN_DIR}/out-sf${SF}/graphs/csv/bi/composite-merged-fk/
         ```
 
@@ -66,7 +67,7 @@ Note that unlike Postgres, Umbra does not support directly loading from compress
         . scripts/use-sample-data-set.sh
         ```
 
-1. The data set should consist of uncompressed CSVs. If you retrieved a compressed data set (`.csv.gz` files), set the `${UMBRA_CSV_DIR}` environment variable and uncompress the files (note that doing so deletes the original compressed files):
+1. (optional) The data set should consist of uncompressed CSVs. If you retrieved a compressed data set (`.csv.gz` files), set the `${UMBRA_CSV_DIR}` environment variable and uncompress the files (note that doing so deletes the original compressed files):
 
     ```bash
     scripts/decompress-data-set.sh
