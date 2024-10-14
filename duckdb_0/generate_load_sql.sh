@@ -1,13 +1,13 @@
 #!/bin/bash
 
-if [ $# -ne 1 ]; then
+if [ $# -ne 2 ]; then
   echo "Usage: $0 <SF> <DATAPATH>"
   exit 1
 fi
 
 SF=$1
 DATAPATH=$2
-sed "s|PATHVAR|/$DATAPATH/graphs/csv/bi/composite-merged-fk/initial_snapshot/|" snb-load.sql > temp.sql
+sed "s|PATHVAR|$DATAPATH/graphs/csv/bi/composite-merged-fk/initial_snapshot/|" snb-load.sql > temp.sql
 
 # Step 2: Process each line in temp.sql
 while IFS= read -r line; do
